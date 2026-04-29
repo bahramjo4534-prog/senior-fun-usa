@@ -18,6 +18,13 @@ function App() {
   const [county, setCounty] = useState("All");
   const [selectedListing, setSelectedListing] = useState(null);
 
+  const showTravelListings = () => {
+    setCategory("Senior Travel & Tours");
+    setTimeout(() => {
+      document.getElementById("directory")?.scrollIntoView({ behavior: "smooth" });
+    }, 50);
+  };
+
   useEffect(() => {
     async function loadListings() {
       try {
@@ -161,7 +168,7 @@ function App() {
               <a href={SUBMIT_FORM_URL} target="_blank" rel="noreferrer" className="secondary-button">
                 Submit a listing
               </a>
-              <button type="button" className="secondary-button hero-link-button" onClick={() => setCategory("Senior Travel & Tours")}>
+              <button type="button" className="secondary-button hero-link-button" onClick={showTravelListings}>
                 Senior Travel & Tours
               </button>
             </div>
@@ -216,6 +223,46 @@ function App() {
             from official or trusted sources and is designed to grow into a
             larger national directory over time.
           </p>
+        </section>
+
+
+        <section className="section feature-section">
+          <div className="feature-grid">
+            <article className="feature-card">
+              <span className="feature-icon">🎨</span>
+              <h3>Explore Activities</h3>
+              <p>
+                Find senior centers, museums, bingo, games, arts, music,
+                chair yoga, social clubs, and local programs that help older
+                adults stay active and connected.
+              </p>
+              <a href="#directory">Browse activities</a>
+            </article>
+
+            <article className="feature-card">
+              <span className="feature-icon">🚌</span>
+              <h3>Find Transportation</h3>
+              <p>
+                Discover local transportation help, senior ride programs,
+                accessible options, and community resources that support
+                independence and safe local travel.
+              </p>
+              <a href="#directory">Find transportation</a>
+            </article>
+
+            <article className="feature-card travel-feature">
+              <span className="feature-icon">🌊</span>
+              <h3>Plan Senior Travel</h3>
+              <p>
+                Explore day trips, bus tours, group outings, senior travel
+                programs, cruises, seasonal trips, and travel-friendly resources
+                for older adults.
+              </p>
+              <button type="button" onClick={showTravelListings}>
+                See travel listings
+              </button>
+            </article>
+          </div>
         </section>
 
         <section className="section" id="directory">
