@@ -265,6 +265,48 @@ function App() {
           </div>
         </section>
 
+
+        <section className="section how-section">
+          <div className="section-heading">
+            <p className="eyebrow">How it works</p>
+            <h2>Use Senior Fun USA as a starting point.</h2>
+            <p>
+              Listings are meant to help you discover options quickly. Always
+              confirm details directly with the organization before visiting,
+              registering, paying, or arranging transportation.
+            </p>
+          </div>
+
+          <div className="how-grid">
+            <article className="how-card">
+              <span>1</span>
+              <h3>Search trusted listings</h3>
+              <p>
+                Browse senior centers, activities, transportation help, travel,
+                museums, discounts, caregiver resources, and community programs.
+              </p>
+            </article>
+
+            <article className="how-card">
+              <span>2</span>
+              <h3>Confirm details directly</h3>
+              <p>
+                Program dates, pricing, accessibility, registration rules, and
+                transportation availability can change, so contact the provider first.
+              </p>
+            </article>
+
+            <article className="how-card">
+              <span>3</span>
+              <h3>Suggest a listing</h3>
+              <p>
+                Know a senior-friendly program, event, trip, service, or resource?
+                Submit it for review so the directory can keep growing.
+              </p>
+            </article>
+          </div>
+        </section>
+
         <section className="section" id="directory">
           <div className="section-heading">
             <div>
