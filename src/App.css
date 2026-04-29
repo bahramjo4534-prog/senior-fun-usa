@@ -394,6 +394,52 @@ select {
   font-size: 17px;
 }
 
+
+.disclaimer-section {
+  padding-top: 0;
+}
+
+.disclaimer-card {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 22px;
+  padding: 30px;
+  border-radius: 28px;
+  background: #fffaf2;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 30px rgba(23, 32, 51, 0.06);
+}
+
+.disclaimer-card h2 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.disclaimer-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-content: start;
+}
+
+.footer-links a {
+  text-decoration: none;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: white;
+  font-weight: 900;
+  color: var(--brand-dark);
+}
+
 .footer {
   max-width: 1180px;
   margin: 30px auto 0;
@@ -517,7 +563,8 @@ select {
   .hero-grid,
   .intro,
   .footer,
-  .submit-card {
+  .submit-card,
+  .disclaimer-card {
     grid-template-columns: 1fr;
   }
 

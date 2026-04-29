@@ -300,6 +300,28 @@ function App() {
         </div>
       </section>
 
+      <section className="section disclaimer-section">
+        <div className="disclaimer-card">
+          <div>
+            <p className="eyebrow">Important note</p>
+            <h2>Please confirm details before attending.</h2>
+          </div>
+          <p>
+            Senior Fun USA is a helpful directory, not an official government,
+            medical, transportation, or care provider website. Listings are based
+            on public information and trusted sources, but schedules, costs,
+            eligibility, accessibility, transportation availability, and program
+            details can change. Always contact the organization directly before
+            visiting, registering, or scheduling a ride.
+          </p>
+          <p>
+            Privacy note: if you submit a listing through our Google Form, your
+            submission will be reviewed before anything is added to the public
+            directory.
+          </p>
+        </div>
+      </section>
+
       <footer className="footer">
         <div>
           <h2>Senior Fun USA</h2>
@@ -308,6 +330,13 @@ function App() {
             more U.S. states, and later Canada.
           </p>
         </div>
+
+        <div className="footer-links">
+          <a href="#directory">Directory</a>
+          <a href={SUBMIT_FORM_URL} target="_blank" rel="noreferrer">Submit a listing</a>
+          <a href="#about">About</a>
+        </div>
+
         <p className="footer-note">
           Always contact each organization directly to confirm schedules,
           pricing, accessibility, registration, and availability.
