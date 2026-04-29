@@ -1,13 +1,14 @@
 :root {
-  --bg: #f7f3ec;
+  --bg: #f7f1e7;
   --card: #ffffff;
   --text: #172033;
   --muted: #657084;
-  --brand: #1f5f5b;
-  --brand-dark: #143f3c;
+  --brand: #155e8a;
+  --brand-dark: #0e3f5f;
   --accent: #e7b75f;
-  --line: #e6ded2;
-  --soft: #eef6f3;
+  --line: #e3d8c8;
+  --soft: #e8f4fa;
+  --seafoam: #1f6f68;
   --shadow: 0 24px 60px rgba(23, 32, 51, 0.12);
 }
 
@@ -43,8 +44,9 @@ select {
 .hero {
   padding: 24px;
   background:
-    radial-gradient(circle at top right, rgba(231, 183, 95, 0.25), transparent 34%),
-    linear-gradient(135deg, #f7f3ec 0%, #eef6f3 100%);
+    radial-gradient(circle at top right, rgba(231, 183, 95, 0.22), transparent 34%),
+    radial-gradient(circle at top left, rgba(21, 94, 138, 0.13), transparent 30%),
+    linear-gradient(135deg, #f7f1e7 0%, #e8f4fa 100%);
 }
 
 .nav {
@@ -66,7 +68,7 @@ select {
   width: 52px;
   height: 52px;
   border-radius: 18px;
-  background: var(--brand);
+  background: linear-gradient(135deg, var(--brand), var(--brand-dark));
   color: white;
   display: grid;
   place-items: center;
@@ -311,11 +313,13 @@ select {
 .category-tag {
   background: var(--soft);
   color: var(--brand-dark);
+  border: 1px solid rgba(21, 94, 138, 0.12);
 }
 
 .location-tag {
   background: #fff5df;
   color: #835b11;
+  border: 1px solid rgba(231, 183, 95, 0.25);
 }
 
 .listing-card h3 {
@@ -378,7 +382,8 @@ select {
   padding: 34px;
   border-radius: 28px;
   background:
-    radial-gradient(circle at top right, rgba(231, 183, 95, 0.25), transparent 32%),
+    radial-gradient(circle at top right, rgba(231, 183, 95, 0.24), transparent 32%),
+    radial-gradient(circle at bottom left, rgba(21, 94, 138, 0.10), transparent 36%),
     var(--card);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
