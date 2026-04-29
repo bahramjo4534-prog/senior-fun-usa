@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://main.d27dexl9qkif89.amplifyapp.com/sitemap.xml
+Sitemap: https://seniorfunusa.com/sitemap.xml
