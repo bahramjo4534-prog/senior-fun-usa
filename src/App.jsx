@@ -3,6 +3,7 @@ import Papa from "papaparse";
 import "./App.css";
 
 const DATA_URL = "/data/senior-fun-listings.csv";
+const SUBMIT_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdbXYVCo02FVyqYorIT236XG515b_R-z6zmc0OJobuiHXQdKQ/viewform?usp=publish-editor";
 
 function clean(value) {
   return value && value.trim() ? value.trim() : "Not listed";
@@ -158,6 +159,9 @@ function App() {
               <a href="#about" className="secondary-button">
                 About the project
               </a>
+              <a href={SUBMIT_FORM_URL} target="_blank" rel="noreferrer" className="secondary-button">
+                Submit a listing
+              </a>
             </div>
           </div>
 
@@ -277,6 +281,24 @@ function App() {
           )}
         </section>
       </main>
+
+      <section className="section submit-section">
+        <div className="submit-card">
+          <div>
+            <p className="eyebrow">Help grow the directory</p>
+            <h2>Know a senior-friendly activity or resource?</h2>
+            <p>
+              Suggest a senior center, travel option, transportation resource,
+              museum program, chair yoga class, memory café, caregiver support
+              group, discount, or community activity. Every submission is
+              reviewed before it is added to Senior Fun USA.
+            </p>
+          </div>
+          <a href={SUBMIT_FORM_URL} target="_blank" rel="noreferrer" className="primary-button">
+            Submit a listing
+          </a>
+        </div>
+      </section>
 
       <footer className="footer">
         <div>

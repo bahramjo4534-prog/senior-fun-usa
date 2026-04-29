@@ -362,6 +362,38 @@ select {
   font-weight: 800;
 }
 
+.submit-section {
+  padding-top: 20px;
+}
+
+.submit-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding: 34px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at top right, rgba(231, 183, 95, 0.25), transparent 32%),
+    var(--card);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.submit-card h2 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.submit-card p:last-child {
+  max-width: 760px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 17px;
+}
+
 .footer {
   max-width: 1180px;
   margin: 30px auto 0;
@@ -484,7 +516,8 @@ select {
 @media (max-width: 900px) {
   .hero-grid,
   .intro,
-  .footer {
+  .footer,
+  .submit-card {
     grid-template-columns: 1fr;
   }
 
