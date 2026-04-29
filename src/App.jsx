@@ -145,23 +145,25 @@ function App() {
 
         <section className="hero-grid">
           <div className="hero-copy">
-            <p className="pill">Massachusetts pilot directory</p>
-            <h2>Helping seniors stay active, social, and connected.</h2>
+            <p className="pill">Welcome to Senior Fun USA</p>
+            <h2>Discover senior-friendly places, activities, and travel.</h2>
             <p>
-              Find senior centers, chair yoga, bingo, transportation help,
-              memory-friendly programs, museums, day trips, caregiver resources,
-              and local activities across Massachusetts.
+              Senior Fun USA helps older adults, families, and caregivers find
+              trusted senior centers, social activities, transportation help,
+              museums, discounts, caregiver resources, dementia-friendly programs,
+              and senior travel opportunities. We are starting in Massachusetts
+              and building toward a nationwide senior lifestyle directory.
             </p>
             <div className="hero-actions">
               <a href="#directory" className="primary-button">
-                Search listings
-              </a>
-              <a href="#about" className="secondary-button">
-                About the project
+                Explore directory
               </a>
               <a href={SUBMIT_FORM_URL} target="_blank" rel="noreferrer" className="secondary-button">
                 Submit a listing
               </a>
+              <button type="button" className="secondary-button hero-link-button" onClick={() => setCategory("Senior Travel & Tours")}>
+                Senior Travel & Tours
+              </button>
             </div>
           </div>
 

@@ -32,6 +32,10 @@ select {
   font: inherit;
 }
 
+.hero-link-button {
+  cursor: pointer;
+}
+
 .app {
   min-height: 100vh;
 }
