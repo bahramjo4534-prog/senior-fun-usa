@@ -627,3 +627,45 @@ select {
     padding: 22px;
   }
 }
+
+.hero-side {
+  display: grid;
+  gap: 18px;
+}
+
+.mosaic-card {
+  overflow: hidden;
+  border-radius: 28px;
+  background: var(--card);
+  border: 1px solid rgba(227, 216, 200, 0.95);
+  box-shadow: var(--shadow);
+}
+
+.mosaic-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.mosaic-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+  padding: 16px 18px;
+  background: linear-gradient(135deg, #ffffff, var(--soft));
+}
+
+.mosaic-caption span {
+  color: var(--brand);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.mosaic-caption strong {
+  color: var(--text);
+  font-size: 15px;
+}

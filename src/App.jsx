@@ -167,24 +167,37 @@ function App() {
             </div>
           </div>
 
-          <div className="stats-card">
-            <h3>Directory Snapshot</h3>
-            <div className="stats-grid">
-              <div>
-                <strong>{stats.total}</strong>
-                <span>Total listings</span>
+          <div className="hero-side">
+            <div className="mosaic-card">
+              <img
+                src="/images/senior-fun-mosaic.png"
+                alt="Mosaic artwork of two beach chairs under an umbrella facing the ocean"
+              />
+              <div className="mosaic-caption">
+                <span>Senior Fun USA</span>
+                <strong>Coastal, calm, and connected.</strong>
               </div>
-              <div>
-                <strong>{stats.citiesCovered}</strong>
-                <span>Cities covered</span>
-              </div>
-              <div>
-                <strong>{stats.seniorCenters}</strong>
-                <span>Senior centers</span>
-              </div>
-              <div>
-                <strong>{stats.transportation}</strong>
-                <span>Transportation options</span>
+            </div>
+
+            <div className="stats-card">
+              <h3>Directory Snapshot</h3>
+              <div className="stats-grid">
+                <div>
+                  <strong>{stats.total}</strong>
+                  <span>Total listings</span>
+                </div>
+                <div>
+                  <strong>{stats.citiesCovered}</strong>
+                  <span>Cities covered</span>
+                </div>
+                <div>
+                  <strong>{stats.seniorCenters}</strong>
+                  <span>Senior centers</span>
+                </div>
+                <div>
+                  <strong>{stats.transportation}</strong>
+                  <span>Transportation options</span>
+                </div>
               </div>
             </div>
           </div>
