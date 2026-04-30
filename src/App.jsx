@@ -145,9 +145,17 @@ function App() {
               <h1>Senior Fun Massachusetts</h1>
             </div>
           </div>
-          <a className="nav-button" href="#directory">
-            Explore Directory
-          </a>
+          <div className="header-actions">
+            <a className="nav-button" href="#directory">
+              Explore Directory
+            </a>
+            <button type="button" className="nav-button nav-action-button" onClick={showTravelListings}>
+              Senior Travel
+            </button>
+            <a className="nav-button" href={SUBMIT_FORM_URL} target="_blank" rel="noreferrer">
+              Submit a Listing
+            </a>
+          </div>
         </nav>
 
         <section className="hero-grid">
