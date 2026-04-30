@@ -110,10 +110,11 @@ function App() {
         item.shortDescription.toLowerCase().includes(searchText);
 
       const matchesCategory = category === "All" || item.category === category;
+      const matchesState = stateFilter === "All" || item.state === stateFilter;
       const matchesCity = city === "All" || item.city === city;
       const matchesCounty = county === "All" || item.county === county;
 
-      return matchesSearch && matchesCategory && matchesCity && matchesCounty;
+      return matchesSearch && matchesCategory && matchesState && matchesCity && matchesCounty;
     });
   }, [listings, search, category, stateFilter, city, county]);
 
