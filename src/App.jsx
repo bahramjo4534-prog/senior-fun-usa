@@ -174,7 +174,7 @@ function App() {
               trusted senior centers, social activities, transportation help,
               museums, discounts, caregiver resources, dementia-friendly programs,
               and senior travel opportunities. We are starting in Massachusetts
-              and building toward a nationwide senior lifestyle directory.
+              and building first two states in a growing nationwide senior lifestyle directory.
             </p>
             <div className="hero-actions">
               <a href="#directory" className="primary-button">
@@ -209,16 +209,16 @@ function App() {
                   <span>Total listings</span>
                 </div>
                 <div>
-                  <strong>{stats.citiesCovered}</strong>
-                  <span>Cities covered</span>
+                  <strong>2</strong>
+                  <span>States covered</span>
                 </div>
                 <div>
-                  <strong>{stats.seniorCenters}</strong>
-                  <span>Senior centers</span>
+                  <strong>28</strong>
+                  <span>Florida listings</span>
                 </div>
                 <div>
-                  <strong>{stats.transportation}</strong>
-                  <span>Transportation options</span>
+                  <strong>Travel</strong>
+                  <span>+ rides</span>
                 </div>
               </div>
             </div>
@@ -233,10 +233,10 @@ function App() {
             <h2>A simple directory for older adults, families, and caregivers.</h2>
           </div>
           <p>
-            Senior Fun USA is starting with Massachusetts as the first state directory in the future
-            national Senior Fun network. This first version uses verified listings
+              Senior Fun USA now includes Massachusetts and Florida as the first two state
+              directories in the future national Senior Fun network. This version uses verified listings
             from official or trusted sources and is designed to grow into a
-            larger national directory over time.
+              larger national directory over time.
           </p>
         </section>
 
