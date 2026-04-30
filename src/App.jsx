@@ -173,8 +173,8 @@ function App() {
               Senior Fun USA helps older adults, families, and caregivers find
               trusted senior centers, social activities, transportation help,
               museums, discounts, caregiver resources, dementia-friendly programs,
-              and senior travel opportunities. We are starting in Massachusetts
-              and building first two states in a growing nationwide senior lifestyle directory.
+              and senior travel opportunities. We now include Massachusetts and Florida as the
+              first two states in a growing nationwide senior lifestyle directory.
             </p>
             <div className="hero-actions">
               <a href="#directory" className="primary-button">
