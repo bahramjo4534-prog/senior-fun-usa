@@ -14,6 +14,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
+  const [stateFilter, setStateFilter] = useState("All");
   const [city, setCity] = useState("All");
   const [county, setCounty] = useState("All");
   const [selectedListing, setSelectedListing] = useState(null);
@@ -92,6 +93,10 @@ function App() {
     return ["All", ...new Set(listings.map((item) => item.county).sort())];
   }, [listings]);
 
+  const states = useMemo(() => {
+    return ["All", ...new Set(listings.map((item) => item.state).filter(Boolean).sort())];
+  }, [listings]);
+
   const filteredListings = useMemo(() => {
     const searchText = search.toLowerCase();
 
@@ -110,7 +115,7 @@ function App() {
 
       return matchesSearch && matchesCategory && matchesCity && matchesCounty;
     });
-  }, [listings, search, category, city, county]);
+  }, [listings, search, category, stateFilter, city, county]);
 
   const stats = useMemo(() => {
     const seniorCenters = listings.filter((item) => item.category === "Senior Center").length;
@@ -130,6 +135,7 @@ function App() {
   function resetFilters() {
     setSearch("");
     setCategory("All");
+    setStateFilter("All");
     setCity("All");
     setCounty("All");
   }
@@ -142,7 +148,7 @@ function App() {
             <span className="brand-mark">SF</span>
             <div>
               <p className="eyebrow">Senior Fun USA</p>
-              <h1>Senior Fun Massachusetts</h1>
+              <h1>Senior Fun USA</h1>
             </div>
           </div>
           <div className="header-actions">
@@ -226,8 +232,8 @@ function App() {
             <h2>A simple directory for older adults, families, and caregivers.</h2>
           </div>
           <p>
-            Senior Fun Massachusetts is the first state directory in the future
-            Senior Fun USA network. This first version uses verified listings
+            Senior Fun USA is starting with Massachusetts as the first state directory in the future
+            national Senior Fun network. This first version uses verified listings
             from official or trusted sources and is designed to grow into a
             larger national directory over time.
           </p>
@@ -339,6 +345,14 @@ function App() {
                 </option>
               ))}
             </select>
+              <select value={stateFilter} onChange={(event) => setStateFilter(event.target.value)}>
+                {states.map((item) => (
+                  <option key={item} value={item}>
+                    {item === "All" ? "All states" : item}
+                  </option>
+                ))}
+              </select>
+
 
             <select value={city} onChange={(event) => setCity(event.target.value)}>
               {cities.map((item) => (
