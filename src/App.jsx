@@ -503,6 +503,22 @@ function App() {
       </section>
 
 
+
+      <section className="section seo-link-section">
+        <p className="eyebrow">Popular senior resource searches</p>
+        <div className="seo-link-cloud">
+          <a href="#directory" onClick={() => setStateFilter("Florida")}>Senior centers in Florida</a>
+          <a href="#directory" onClick={() => setStateFilter("Massachusetts")}>Senior centers in Massachusetts</a>
+          <a href="#directory">Senior transportation help</a>
+          <a href="#directory">Senior travel programs</a>
+          <a href="#directory">Senior activities for older adults</a>
+          <a href="#directory">Caregiver resources</a>
+          <a href="#directory">Dementia-friendly programs</a>
+          <a href="#directory">Senior-friendly places near me</a>
+        </div>
+      </section>
+
+
       <footer className="footer">
         <div>
           <h2>Senior Fun USA</h2>

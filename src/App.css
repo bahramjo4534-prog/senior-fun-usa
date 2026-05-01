@@ -1098,3 +1098,37 @@ select {
     grid-template-columns: 1fr;
   }
 }
+
+.seo-link-section {
+  padding-top: 40px;
+  padding-bottom: 60px;
+  text-align: center;
+}
+
+.seo-link-cloud {
+  max-width: 950px;
+  margin: 22px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.seo-link-cloud a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 800;
+  box-shadow: var(--shadow-soft);
+}
+
+.seo-link-cloud a:hover {
+  color: var(--primary);
+  transform: translateY(-1px);
+}
