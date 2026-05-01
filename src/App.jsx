@@ -213,7 +213,7 @@ function App() {
                   <span>States covered</span>
                 </div>
                 <div>
-                  <strong>38</strong>
+                  <strong>50</strong>
                   <span>Florida listings</span>
                 </div>
                 <div>
