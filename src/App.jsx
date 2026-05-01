@@ -449,6 +449,60 @@ function App() {
         </div>
       </section>
 
+
+      <section className="section state-seo-section">
+        <p className="eyebrow">Senior resources by state</p>
+        <h2>Find senior-friendly resources in Massachusetts and Florida</h2>
+        <p className="state-seo-intro">
+          Senior Fun USA helps older adults, families, and caregivers discover trusted
+          senior centers, transportation help, social activities, caregiver resources,
+          dementia-friendly programs, senior discounts, museums, and senior travel
+          opportunities.
+        </p>
+
+        <div className="state-seo-grid">
+          <article className="state-seo-card">
+            <h3>Massachusetts senior resources</h3>
+            <p>
+              Browse Massachusetts senior centers, community programs, transportation
+              options, recreational activities, cultural opportunities, caregiver resources,
+              and senior travel ideas across cities including Newton, Boston, Cambridge,
+              Worcester, Springfield, Lowell, Quincy, and more.
+            </p>
+            <a href="#directory" onClick={() => setStateFilter("Massachusetts")}>
+              View Massachusetts listings
+            </a>
+          </article>
+
+          <article className="state-seo-card">
+            <h3>Florida senior resources</h3>
+            <p>
+              Explore Florida senior centers, senior transportation help, activity programs,
+              caregiver support, recreation centers, social events, accessible services,
+              and senior travel resources across Miami, Orlando, Tampa, Sarasota,
+              Jacksonville, Fort Lauderdale, Palm Bay, and other Florida communities.
+            </p>
+            <a href="#directory" onClick={() => setStateFilter("Florida")}>
+              View Florida listings
+            </a>
+          </article>
+
+          <article className="state-seo-card">
+            <h3>Senior travel, rides, and activities</h3>
+            <p>
+              Use the directory as a starting point to compare senior-friendly places,
+              day trips, group outings, local ride programs, community centers, classes,
+              social clubs, meals, events, and support services. Always confirm details
+              directly with the provider before visiting or registering.
+            </p>
+            <a href="#directory">
+              Search the directory
+            </a>
+          </article>
+        </div>
+      </section>
+
+
       <footer className="footer">
         <div>
           <h2>Senior Fun USA</h2>
