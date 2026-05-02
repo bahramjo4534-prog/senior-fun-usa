@@ -209,12 +209,12 @@ function App() {
                   <span>Total listings</span>
                 </div>
                 <div>
-                  <strong>2</strong>
+                  <strong>3</strong>
                   <span>States covered</span>
                 </div>
                 <div>
-                  <strong>75</strong>
-                  <span>Florida listings</span>
+                  <strong>50</strong>
+                  <span>New York listings</span>
                 </div>
                 <div>
                   <strong>Travel</strong>
