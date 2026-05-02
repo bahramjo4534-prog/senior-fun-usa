@@ -487,6 +487,20 @@ function App() {
           </article>
 
           <article className="state-seo-card">
+            <h3>New York senior resources</h3>
+            <p>
+              Explore New York senior centers, older adult programs, transportation help,
+              caregiver resources, museums, cultural opportunities, social services,
+              senior activities, and travel-friendly resources across New York City,
+              Brooklyn, Queens, Bronx, Staten Island, Rochester, Buffalo, Syracuse,
+              Albany, and more.
+            </p>
+            <a href="#directory" onClick={() => setStateFilter("New York")}>
+              View New York listings
+            </a>
+          </article>
+
+          <article className="state-seo-card">
             <h3>Senior travel, rides, and activities</h3>
             <p>
               Use the directory as a starting point to compare senior-friendly places,
@@ -508,6 +522,7 @@ function App() {
         <div className="seo-link-cloud">
           <a href="#directory" onClick={() => setStateFilter("Florida")}>Senior centers in Florida</a>
           <a href="#directory" onClick={() => setStateFilter("Massachusetts")}>Senior centers in Massachusetts</a>
+          <a href="#directory" onClick={() => setStateFilter("New York")}>Senior centers in New York</a>
           <a href="#directory">Senior transportation help</a>
           <a href="#directory">Senior travel programs</a>
           <a href="#directory">Senior activities for older adults</a>
