@@ -232,8 +232,7 @@ function App() {
             <h2>A simple directory for older adults, families, and caregivers.</h2>
           </div>
           <p>
-              Senior Fun USA now includes Massachusetts and Florida as the first two state
-              directories in the future national Senior Fun network. This version uses verified listings
+              Senior Fun USA now includes Massachusetts, Florida, and New York as the first three state directories in the future national Senior Fun network. This version uses verified listings
             from official or trusted sources and is designed to grow into a
               larger national directory over time.
           </p>
