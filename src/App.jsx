@@ -173,8 +173,7 @@ function App() {
               Senior Fun USA helps older adults, families, and caregivers find
               trusted senior centers, social activities, transportation help,
               museums, discounts, caregiver resources, dementia-friendly programs,
-              and senior travel opportunities. We now include Massachusetts and Florida as the
-              first two states in a growing nationwide senior lifestyle directory.
+              and senior travel opportunities. We now include Massachusetts, Florida, and New York as the first three states in a growing nationwide senior lifestyle directory.
             </p>
             <div className="hero-actions">
               <a href="#directory" className="primary-button">
@@ -452,7 +451,7 @@ function App() {
 
       <section className="section state-seo-section">
         <p className="eyebrow">Senior resources by state</p>
-        <h2>Find senior-friendly resources in Massachusetts and Florida</h2>
+        <h2>Find senior-friendly resources in Massachusetts, Florida, and New York</h2>
         <p className="state-seo-intro">
           Senior Fun USA helps older adults, families, and caregivers discover trusted
           senior centers, transportation help, social activities, caregiver resources,
