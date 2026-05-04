@@ -548,6 +548,46 @@ function App() {
       </section>
 
 
+
+      <section className="trust-section" id="about">
+        <div className="section-heading">
+          <p>ABOUT SENIOR FUN USA</p>
+          <h2>A growing senior-friendly directory built from trusted public sources.</h2>
+        </div>
+
+        <div className="trust-grid">
+          <article className="trust-card">
+            <h3>What we list</h3>
+            <p>
+              Senior Fun USA helps older adults, families, and caregivers find senior centers,
+              transportation help, caregiver resources, social activities, museums, discounts,
+              and senior-friendly travel ideas across the United States.
+            </p>
+          </article>
+
+          <article className="trust-card">
+            <h3>How listings are reviewed</h3>
+            <p>
+              Listings are added from official city, county, nonprofit, museum, transportation,
+              and community organization sources when possible. Visitors should always confirm
+              hours, pricing, registration, accessibility, and availability directly with each provider.
+            </p>
+          </article>
+
+          <article className="trust-card">
+            <h3>Suggest or correct a listing</h3>
+            <p>
+              Know a senior-friendly place, program, ride service, activity, or resource we should add?
+              Use the submit form to suggest a listing or report an update so the directory can keep improving.
+            </p>
+            <a href={SUBMIT_FORM_URL} target="_blank" rel="noreferrer">
+              Submit a listing
+            </a>
+          </article>
+        </div>
+      </section>
+
+
       <footer className="footer">
         <div>
           <h2>Senior Fun USA</h2>
