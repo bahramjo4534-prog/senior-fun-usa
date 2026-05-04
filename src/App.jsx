@@ -173,7 +173,7 @@ function App() {
               Senior Fun USA helps older adults, families, and caregivers find
               trusted senior centers, social activities, transportation help,
               museums, discounts, caregiver resources, dementia-friendly programs,
-              and senior travel opportunities. We now include Massachusetts, Florida, and New York as the first three states in a growing nationwide senior lifestyle directory.
+              and senior travel opportunities. We now include Massachusetts, Florida, New York, and California as the first four states in a growing nationwide senior lifestyle directory.
             </p>
             <div className="hero-actions">
               <a href="#directory" className="primary-button">
@@ -208,12 +208,12 @@ function App() {
                   <span>Total listings</span>
                 </div>
                 <div>
-                  <strong>3</strong>
-                  <span>States covered</span>
+                  <strong>4</strong>
+              <span>States covered</span>
                 </div>
                 <div>
                   <strong>50</strong>
-                  <span>New York listings</span>
+              <span>California listings</span>
                 </div>
                 <div>
                   <strong>Travel</strong>
@@ -232,7 +232,7 @@ function App() {
             <h2>A simple directory for older adults, families, and caregivers.</h2>
           </div>
           <p>
-              Senior Fun USA now includes Massachusetts, Florida, and New York as the first three state directories in the future national Senior Fun network. This version uses verified listings
+              Senior Fun USA now includes Massachusetts, Florida, New York, and California as the first four state directories in the future national Senior Fun network. This version uses verified listings
             from official or trusted sources and is designed to grow into a
               larger national directory over time.
           </p>
@@ -450,7 +450,7 @@ function App() {
 
       <section className="section state-seo-section">
         <p className="eyebrow">Senior resources by state</p>
-        <h2>Find senior-friendly resources in Massachusetts, Florida, and New York</h2>
+        <h2>Find senior-friendly resources in Massachusetts, Florida, New York, and California</h2>
         <p className="state-seo-intro">
           Senior Fun USA helps older adults, families, and caregivers discover trusted
           senior centers, transportation help, social activities, caregiver resources,
@@ -499,6 +499,21 @@ function App() {
             </a>
           </article>
 
+
+          <article className="state-seo-card">
+            <h3>California senior resources</h3>
+            <p>
+              Explore California senior centers, older adult programs, transportation help,
+              caregiver resources, museums, cultural opportunities, social services,
+              senior activities, and travel-friendly resources across Los Angeles,
+              San Francisco, San Diego, San José, Sacramento, Oakland, Anaheim,
+              Riverside, Fresno, Santa Clara, and more.
+            </p>
+            <a href="#directory" onClick={() => setStateFilter("California")}>
+              View California listings
+            </a>
+          </article>
+
           <article className="state-seo-card">
             <h3>Senior travel, rides, and activities</h3>
             <p>
@@ -522,6 +537,7 @@ function App() {
           <a href="#directory" onClick={() => setStateFilter("Florida")}>Senior centers in Florida</a>
           <a href="#directory" onClick={() => setStateFilter("Massachusetts")}>Senior centers in Massachusetts</a>
           <a href="#directory" onClick={() => setStateFilter("New York")}>Senior centers in New York</a>
+          <a href="#directory" onClick={() => setStateFilter("California")}>Senior centers in California</a>
           <a href="#directory">Senior transportation help</a>
           <a href="#directory">Senior travel programs</a>
           <a href="#directory">Senior activities for older adults</a>
