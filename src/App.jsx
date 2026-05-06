@@ -329,6 +329,18 @@ function App() {
             <p>{filteredListings.length} results shown</p>
           </div>
 
+
+          <div className="directory-help-box">
+            <h3>How to use this directory</h3>
+            <p>
+              Search by state, city, category, or keyword. Use the filters to find senior centers,
+              transportation help, caregiver resources, activities, wellness programs, discounts,
+              and senior travel ideas. Always confirm schedules, pricing, accessibility, registration,
+              and availability directly with each provider before visiting.
+            </p>
+          </div>
+
+
           <div className="filters">
             <input
               type="search"
