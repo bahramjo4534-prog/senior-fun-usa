@@ -608,6 +608,45 @@ function App() {
 
 
 
+      <section className="travel-routes-section">
+        <div className="section-kicker">Senior travel routes</div>
+        <h2>Maine to Nova Scotia senior-friendly travel idea</h2>
+        <p className="travel-routes-intro">
+          Senior Fun USA now includes Maine resources and travel ideas, including a scenic
+          Bar Harbor to Yarmouth, Nova Scotia ferry route. This can help older adults,
+          families, caregivers, and travel groups discover coastal activities, museums,
+          senior-friendly stops, and cross-border trip ideas.
+        </p>
+
+        <div className="travel-route-card">
+          <div>
+            <span className="route-pill">Featured route</span>
+            <h3>Bar Harbor, Maine → Yarmouth, Nova Scotia</h3>
+            <p>
+              Start with senior-friendly Maine activities around Portland, Bar Harbor,
+              Acadia, Bath, Boothbay, Rockland, and Camden. Then explore The CAT Ferry
+              as a seasonal travel option connecting Maine with Nova Scotia.
+            </p>
+          </div>
+
+          <div className="route-actions">
+            <a href="#directory" onClick={() => {
+              setStateFilter("Maine");
+              setSearchTerm("CAT Ferry");
+            }}>
+              View ferry listing
+            </a>
+            <a href="#directory" onClick={() => {
+              setStateFilter("Maine");
+              setSearchTerm("travel");
+            }}>
+              Explore Maine travel ideas
+            </a>
+          </div>
+        </div>
+      </section>
+
+
       <section className="trust-section" id="about">
         <div className="section-heading">
           <p>ABOUT SENIOR FUN USA</p>
