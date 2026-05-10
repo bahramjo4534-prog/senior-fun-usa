@@ -26,6 +26,15 @@ function App() {
     }, 50);
   };
 
+  const showStateListings = (stateName) => {
+    setSearch("");
+    setCategory("All");
+    setStateFilter(stateName);
+    setCity("All");
+    setCounty("All");
+    scrollToDirectory();
+  };
+
   const showTravelListings = () => {
     setSearch("");
     setCategory("Senior Travel & Tours");
@@ -179,6 +188,7 @@ function App() {
               <h1>Senior Fun USA</h1>
             </div>
           </div>
+
           <div className="header-actions">
             <a className="nav-button" href="#directory">
               Explore Directory
@@ -199,9 +209,10 @@ function App() {
             <p>
               Senior Fun USA helps older adults, families, and caregivers find trusted senior centers, social activities,
               transportation help, museums, discounts, caregiver resources, dementia-friendly programs, and senior travel
-              opportunities. We now include Massachusetts, Florida, New York, California, Texas, Pennsylvania, and Maine
-              as the first seven states in a growing nationwide senior lifestyle directory.
+              opportunities. We now include Massachusetts, Florida, New York, California, Texas, Pennsylvania, Maine, and
+              Washington as the first eight states in a growing nationwide senior lifestyle directory.
             </p>
+
             <div className="hero-actions">
               <a href="#directory" className="primary-button">
                 Explore directory
@@ -235,7 +246,7 @@ function App() {
                   <span>Total listings</span>
                 </div>
                 <div>
-                  <strong>7</strong>
+                  <strong>8</strong>
                   <span>States covered</span>
                 </div>
                 <div>
@@ -259,9 +270,10 @@ function App() {
             <h2>A simple directory for older adults, families, and caregivers.</h2>
           </div>
           <p>
-            Senior Fun USA now includes Massachusetts, Florida, New York, California, Texas, Pennsylvania, and Maine as
-            the first seven state directories in the future national Senior Fun network. This version uses verified
-            listings from official or trusted sources and is designed to grow into a larger national directory over time.
+            Senior Fun USA now includes Massachusetts, Florida, New York, California, Texas, Pennsylvania, Maine, and
+            Washington as the first eight state directories in the future national Senior Fun network. This version uses
+            verified listings from official or trusted sources and is designed to grow into a larger national directory
+            over time.
           </p>
         </section>
 
@@ -477,7 +489,8 @@ function App() {
       <section className="section state-seo-section">
         <p className="eyebrow">Senior resources by state</p>
         <h2>
-          Find senior-friendly resources in Massachusetts, Florida, New York, California, Texas, Pennsylvania, and Maine
+          Find senior-friendly resources in Massachusetts, Florida, New York, California, Texas, Pennsylvania, Maine, and
+          Washington
         </h2>
         <p className="state-seo-intro">
           Senior Fun USA helps older adults, families, and caregivers discover trusted senior centers, transportation
@@ -493,7 +506,7 @@ function App() {
               cultural opportunities, caregiver resources, and senior travel ideas across cities including Newton,
               Boston, Cambridge, Worcester, Springfield, Lowell, Quincy, and more.
             </p>
-            <a href="#directory" onClick={() => setStateFilter("Massachusetts")}>
+            <a href="#directory" onClick={() => showStateListings("Massachusetts")}>
               View Massachusetts listings
             </a>
           </article>
@@ -505,7 +518,7 @@ function App() {
               recreation centers, social events, accessible services, and senior travel resources across Miami, Orlando,
               Tampa, Sarasota, Jacksonville, Fort Lauderdale, Palm Bay, and other Florida communities.
             </p>
-            <a href="#directory" onClick={() => setStateFilter("Florida")}>
+            <a href="#directory" onClick={() => showStateListings("Florida")}>
               View Florida listings
             </a>
           </article>
@@ -517,7 +530,7 @@ function App() {
               cultural opportunities, social services, senior activities, and travel-friendly resources across New York
               City, Brooklyn, Queens, Bronx, Staten Island, Rochester, Buffalo, Syracuse, Albany, and more.
             </p>
-            <a href="#directory" onClick={() => setStateFilter("New York")}>
+            <a href="#directory" onClick={() => showStateListings("New York")}>
               View New York listings
             </a>
           </article>
@@ -530,7 +543,7 @@ function App() {
               Angeles, San Francisco, San Diego, San José, Sacramento, Oakland, Anaheim, Riverside, Fresno, Santa Clara,
               and more.
             </p>
-            <a href="#directory" onClick={() => setStateFilter("California")}>
+            <a href="#directory" onClick={() => showStateListings("California")}>
               View California listings
             </a>
           </article>
@@ -543,7 +556,7 @@ function App() {
               Austin, Dallas, San Antonio, Fort Worth, El Paso, Corpus Christi, Plano, Arlington, Denton, Waco, Irving,
               Garland, Frisco, and more.
             </p>
-            <a href="#directory" onClick={() => setStateFilter("Texas")}>
+            <a href="#directory" onClick={() => showStateListings("Texas")}>
               View Texas listings
             </a>
           </article>
@@ -556,7 +569,7 @@ function App() {
               senior-friendly resources across Philadelphia, Pittsburgh, Harrisburg, Lancaster, Erie, Allentown,
               Scranton, Wilkes-Barre, West Chester, State College, Reading, and more.
             </p>
-            <a href="#directory" onClick={() => setStateFilter("Pennsylvania")}>
+            <a href="#directory" onClick={() => showStateListings("Pennsylvania")}>
               View Pennsylvania listings
             </a>
           </article>
@@ -568,8 +581,21 @@ function App() {
               coastal day trips, senior discounts, senior travel ideas, and scenic activities across Portland, Bar
               Harbor, Bangor, Augusta, Lewiston, South Portland, Rockland, Camden, Bath, Boothbay, Freeport, and more.
             </p>
-            <a href="#directory" onClick={() => setStateFilter("Maine")}>
+            <a href="#directory" onClick={() => showStateListings("Maine")}>
               View Maine listings
+            </a>
+          </article>
+
+          <article className="state-seo-card">
+            <h3>Washington senior resources and travel</h3>
+            <p>
+              Explore Washington senior centers, Area Agencies on Aging, caregiver resources, transportation help,
+              museums, ferry routes, scenic day trips, senior discounts, senior travel ideas, and community activities
+              across Seattle, Tacoma, Spokane, Bellevue, Olympia, Vancouver, Bellingham, Yakima, Everett, Bremerton, and
+              more.
+            </p>
+            <a href="#directory" onClick={() => showStateListings("Washington")}>
+              View Washington listings
             </a>
           </article>
 
@@ -580,7 +606,9 @@ function App() {
               ride programs, community centers, classes, social clubs, meals, events, and support services. Always
               confirm details directly with the provider before visiting or registering.
             </p>
-            <a href="#directory">Search the directory</a>
+            <a href="#directory" onClick={resetFilters}>
+              Search the directory
+            </a>
           </article>
         </div>
       </section>
@@ -588,33 +616,88 @@ function App() {
       <section className="section seo-link-section">
         <p className="eyebrow">Popular senior resource searches</p>
         <div className="seo-link-cloud">
-          <a href="#directory" onClick={() => setStateFilter("Florida")}>
+          <a href="#directory" onClick={() => showStateListings("Florida")}>
             Senior centers in Florida
           </a>
-          <a href="#directory" onClick={() => setStateFilter("Massachusetts")}>
+          <a href="#directory" onClick={() => showStateListings("Massachusetts")}>
             Senior centers in Massachusetts
           </a>
-          <a href="#directory" onClick={() => setStateFilter("New York")}>
+          <a href="#directory" onClick={() => showStateListings("New York")}>
             Senior centers in New York
           </a>
-          <a href="#directory" onClick={() => setStateFilter("California")}>
+          <a href="#directory" onClick={() => showStateListings("California")}>
             Senior centers in California
           </a>
-          <a href="#directory" onClick={() => setStateFilter("Texas")}>
+          <a href="#directory" onClick={() => showStateListings("Texas")}>
             Senior centers in Texas
           </a>
-          <a href="#directory" onClick={() => setStateFilter("Pennsylvania")}>
+          <a href="#directory" onClick={() => showStateListings("Pennsylvania")}>
             Senior centers in Pennsylvania
           </a>
-          <a href="#directory" onClick={() => setStateFilter("Maine")}>
+          <a href="#directory" onClick={() => showStateListings("Maine")}>
             Senior centers in Maine
           </a>
-          <a href="#directory">Senior transportation help</a>
-          <a href="#directory">Senior travel programs</a>
-          <a href="#directory">Senior activities for older adults</a>
-          <a href="#directory">Caregiver resources</a>
-          <a href="#directory">Dementia-friendly programs</a>
-          <a href="#directory">Senior-friendly places near me</a>
+          <a href="#directory" onClick={() => showStateListings("Washington")}>
+            Senior centers in Washington
+          </a>
+          <a
+            href="#directory"
+            onClick={() => {
+              setSearch("");
+              setCategory("Transportation Help");
+              setStateFilter("All");
+              setCity("All");
+              setCounty("All");
+              scrollToDirectory();
+            }}
+          >
+            Senior transportation help
+          </a>
+          <a href="#directory" onClick={showTravelListings}>
+            Senior travel programs
+          </a>
+          <a
+            href="#directory"
+            onClick={() => {
+              setSearch("");
+              setCategory("Senior-Friendly Event");
+              setStateFilter("All");
+              setCity("All");
+              setCounty("All");
+              scrollToDirectory();
+            }}
+          >
+            Senior activities for older adults
+          </a>
+          <a
+            href="#directory"
+            onClick={() => {
+              setSearch("");
+              setCategory("Caregiver Support");
+              setStateFilter("All");
+              setCity("All");
+              setCounty("All");
+              scrollToDirectory();
+            }}
+          >
+            Caregiver resources
+          </a>
+          <a
+            href="#directory"
+            onClick={() => {
+              setSearch("dementia");
+              setCategory("All");
+              setStateFilter("All");
+              setCity("All");
+              setCounty("All");
+              scrollToDirectory();
+            }}
+          >
+            Dementia-friendly programs
+          </a>
+          <a href="#directory" onClick={resetFilters}>
+            Senior-friendly places near me
+          </a>
         </div>
       </section>
 
@@ -648,7 +731,7 @@ function App() {
         </div>
       </section>
 
-      <section className="trust-section" id="about">
+      <section className="trust-section" id="about-info">
         <div className="section-heading">
           <p>ABOUT SENIOR FUN USA</p>
           <h2>A growing senior-friendly directory built from trusted public sources.</h2>
@@ -689,7 +772,10 @@ function App() {
       <footer className="footer">
         <div>
           <h2>Senior Fun USA</h2>
-          <p>Starting in Massachusetts. Built to expand to Florida, New York, more U.S. states, and later Canada.</p>
+          <p>
+            Starting with Massachusetts, Florida, New York, California, Texas, Pennsylvania, Maine, and Washington. Built
+            to expand to more U.S. states and later Canada.
+          </p>
         </div>
 
         <div className="footer-links">
