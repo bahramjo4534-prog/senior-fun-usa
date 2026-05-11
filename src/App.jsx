@@ -34,6 +34,22 @@ const STATE_TO_SLUG = {
   Hawaii: "hawaii",
 };
 
+const CATEGORY_SLUGS = {
+  "senior-travel": "Senior Travel & Tours",
+  "transportation-help": "Transportation Help",
+  "caregiver-support": "Caregiver Support",
+  "senior-centers": "Senior Center",
+  "senior-activities": "Senior-Friendly Event",
+};
+
+const CATEGORY_TO_SLUG = {
+  "Senior Travel & Tours": "senior-travel",
+  "Transportation Help": "transportation-help",
+  "Caregiver Support": "caregiver-support",
+  "Senior Center": "senior-centers",
+  "Senior-Friendly Event": "senior-activities",
+};
+
 const STATE_PAGE_DETAILS = {
   Massachusetts: {
     label: "Massachusetts",
@@ -91,6 +107,44 @@ const STATE_PAGE_DETAILS = {
   },
 };
 
+const CATEGORY_PAGE_DETAILS = {
+  "Senior Travel & Tours": {
+    label: "Senior travel",
+    title: "Senior travel programs and trip ideas",
+    intro:
+      "Explore senior-friendly travel programs, scenic day trips, ferry routes, museums, gardens, cultural attractions, coastal trips, group outings, and slower-paced travel ideas across the Senior Fun USA directory.",
+    image: "/images/states/maine-ferry.png",
+  },
+  "Transportation Help": {
+    label: "Transportation",
+    title: "Senior transportation help",
+    intro:
+      "Find senior transportation resources, ride programs, accessible travel options, community transportation, transit help, and mobility support services for older adults and caregivers.",
+    image: "",
+  },
+  "Caregiver Support": {
+    label: "Caregiver support",
+    title: "Caregiver resources for families",
+    intro:
+      "Browse caregiver support resources, aging services, family assistance programs, community support organizations, dementia-related resources, and help for people caring for older adults.",
+    image: "",
+  },
+  "Senior Center": {
+    label: "Senior centers",
+    title: "Senior centers and community programs",
+    intro:
+      "Find senior centers, older adult centers, community programs, social activities, wellness programs, meals, classes, events, and local support services across the directory.",
+    image: "",
+  },
+  "Senior-Friendly Event": {
+    label: "Senior activities",
+    title: "Senior-friendly activities and events",
+    intro:
+      "Explore senior-friendly events, museums, social programs, art activities, cultural attractions, classes, wellness activities, group outings, and local recreation opportunities.",
+    image: "",
+  },
+};
+
 function clean(value) {
   return value && value.trim() ? value.trim() : "Not listed";
 }
@@ -127,20 +181,22 @@ function App() {
     <Routes>
       <Route path="/" element={<SeniorFunDirectory />} />
       <Route path="/states/:stateSlug" element={<SeniorFunDirectory />} />
+      <Route path="/categories/:categorySlug" element={<SeniorFunDirectory />} />
     </Routes>
   );
 }
 
 function SeniorFunDirectory() {
   const navigate = useNavigate();
-  const { stateSlug } = useParams();
+  const { stateSlug, categorySlug } = useParams();
 
   const pageState = stateSlug ? STATE_SLUGS[stateSlug] || "All" : "All";
+  const pageCategory = categorySlug ? CATEGORY_SLUGS[categorySlug] || "All" : "All";
 
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("All");
+  const [category, setCategory] = useState(pageCategory);
   const [stateFilter, setStateFilter] = useState(pageState);
   const [city, setCity] = useState("All");
   const [county, setCounty] = useState("All");
@@ -148,7 +204,7 @@ function SeniorFunDirectory() {
 
   useEffect(() => {
     setSearch("");
-    setCategory("All");
+    setCategory(pageCategory);
     setStateFilter(pageState);
     setCity("All");
     setCounty("All");
@@ -156,7 +212,7 @@ function SeniorFunDirectory() {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }, 50);
-  }, [pageState]);
+  }, [pageState, pageCategory]);
 
   useEffect(() => {
     async function loadListings() {
@@ -252,20 +308,26 @@ function SeniorFunDirectory() {
   };
 
   const showCategoryListings = (categoryName) => {
+    const slug = CATEGORY_TO_SLUG[categoryName];
+
+    setSearch("");
+    setCategory(categoryName);
+    setStateFilter("All");
+    setCity("All");
+    setCounty("All");
+
+    if (slug) {
+      navigate(`/categories/${slug}`);
+    }
+
+    scrollToTop();
+  };
+
+  const showStateCategoryListings = (categoryName) => {
     setSearch("");
     setCategory(categoryName);
     setCity("All");
     setCounty("All");
-
-    if (stateFilter === "All") {
-      navigate("/");
-    } else {
-      const slug = STATE_TO_SLUG[stateFilter];
-      if (slug) {
-        navigate(`/states/${slug}`);
-      }
-    }
-
     scrollToDirectory();
   };
 
@@ -356,7 +418,8 @@ function SeniorFunDirectory() {
     };
   }, [listings]);
 
-  const stateDetails = stateFilter !== "All" ? STATE_PAGE_DETAILS[stateFilter] : null;
+  const stateDetails = stateFilter !== "All" && categorySlug === undefined ? STATE_PAGE_DETAILS[stateFilter] : null;
+  const categoryDetails = category !== "All" && stateFilter === "All" ? CATEGORY_PAGE_DETAILS[category] : null;
 
   function resetFilters() {
     setSearch("");
@@ -367,6 +430,20 @@ function SeniorFunDirectory() {
     navigate("/");
     scrollToTop();
   }
+
+  const directoryTitle =
+    stateFilter !== "All"
+      ? `${stateFilter} senior-friendly resources`
+      : category !== "All"
+      ? CATEGORY_PAGE_DETAILS[category]?.title || `${category} listings`
+      : "Find senior-friendly resources";
+
+  const directoryCountText =
+    stateFilter !== "All"
+      ? `${stateFilter}: ${filteredListings.length} results shown`
+      : category !== "All"
+      ? `${CATEGORY_PAGE_DETAILS[category]?.label || category}: ${filteredListings.length} results shown`
+      : `${filteredListings.length} results shown`;
 
   return (
     <div className="app">
@@ -399,18 +476,26 @@ function SeniorFunDirectory() {
         <section className="hero-grid">
           <div className="hero-copy">
             <p className="pill">
-              {stateFilter !== "All" ? `Senior Fun ${stateFilter}` : "Welcome to Senior Fun USA"}
+              {stateFilter !== "All"
+                ? `Senior Fun ${stateFilter}`
+                : category !== "All"
+                ? `Senior Fun ${CATEGORY_PAGE_DETAILS[category]?.label || category}`
+                : "Welcome to Senior Fun USA"}
             </p>
 
             <h2>
               {stateFilter !== "All"
                 ? `${stateFilter} senior-friendly resources.`
+                : category !== "All"
+                ? `${CATEGORY_PAGE_DETAILS[category]?.title}.`
                 : "Discover senior-friendly places, activities, and travel."}
             </h2>
 
             <p>
               {stateFilter !== "All"
-                ? stateDetails?.intro
+                ? STATE_PAGE_DETAILS[stateFilter]?.intro
+                : category !== "All"
+                ? CATEGORY_PAGE_DETAILS[category]?.intro
                 : `Senior Fun USA helps older adults, families, and caregivers find trusted senior centers, social activities, transportation help, museums, discounts, caregiver resources, dementia-friendly programs, and senior travel opportunities. We now include ${STATE_LIST_TEXT} as the first nine states in a growing nationwide senior lifestyle directory.`}
             </p>
 
@@ -451,8 +536,14 @@ function SeniorFunDirectory() {
                   <span>States covered</span>
                 </div>
                 <div>
-                  <strong>{stateFilter !== "All" ? filteredListings.length : stats.maineListings}</strong>
-                  <span>{stateFilter !== "All" ? `${stateFilter} listings` : "Maine listings"}</span>
+                  <strong>{stateFilter !== "All" || category !== "All" ? filteredListings.length : stats.maineListings}</strong>
+                  <span>
+                    {stateFilter !== "All"
+                      ? `${stateFilter} listings`
+                      : category !== "All"
+                      ? `${CATEGORY_PAGE_DETAILS[category]?.label || category} listings`
+                      : "Maine listings"}
+                  </span>
                 </div>
                 <div>
                   <strong>Travel</strong>
@@ -464,17 +555,36 @@ function SeniorFunDirectory() {
         </section>
       </header>
 
-      {stateFilter !== "All" && stateDetails && (
-        <StateVisualSection
-          stateName={stateFilter}
-          details={stateDetails}
+      {stateDetails && (
+        <VisualLandingSection
+          label={stateDetails.label}
+          image={stateDetails.image}
+          eyebrow="State directory"
+          title={`Senior Fun ${stateFilter}`}
+          intro={stateDetails.intro}
           count={filteredListings.length}
-          showTravelListings={showTravelListings}
+          countLabel={`${stateFilter} listings`}
+          buttonText={`Browse ${stateFilter} travel ideas`}
+          onButtonClick={() => showStateCategoryListings("Senior Travel & Tours")}
+        />
+      )}
+
+      {categoryDetails && (
+        <VisualLandingSection
+          label={categoryDetails.label}
+          image={categoryDetails.image}
+          eyebrow="Category directory"
+          title={categoryDetails.title}
+          intro={categoryDetails.intro}
+          count={filteredListings.length}
+          countLabel={`${categoryDetails.label} listings`}
+          buttonText="Browse listings"
+          onButtonClick={scrollToDirectory}
         />
       )}
 
       <main>
-        {stateFilter === "All" && (
+        {stateFilter === "All" && category === "All" && (
           <>
             <section className="section intro" id="about">
               <div>
@@ -534,31 +644,37 @@ function SeniorFunDirectory() {
           <div className="section-heading">
             <div>
               <p className="eyebrow">Directory</p>
-              <h2>
-                {stateFilter !== "All"
-                  ? `${stateFilter} senior-friendly resources`
-                  : "Find senior-friendly resources"}
-              </h2>
+              <h2>{directoryTitle}</h2>
             </div>
 
-            <p>
-              {stateFilter !== "All"
-                ? `${stateFilter}: ${filteredListings.length} results shown`
-                : `${filteredListings.length} results shown`}
-            </p>
+            <p>{directoryCountText}</p>
           </div>
 
           <div className="directory-help-box">
-            <h3>{stateFilter !== "All" ? `${stateFilter} directory page` : "How to use this directory"}</h3>
+            <h3>
+              {stateFilter !== "All"
+                ? `${stateFilter} directory page`
+                : category !== "All"
+                ? `${CATEGORY_PAGE_DETAILS[category]?.label || category} category page`
+                : "How to use this directory"}
+            </h3>
             <p>
               {stateFilter !== "All"
                 ? `This page shows senior-friendly resources for ${stateFilter}. Use the filters below to narrow results by category, city, or county. Always confirm schedules, pricing, accessibility, registration, and availability directly with each provider before visiting.`
+                : category !== "All"
+                ? `This page shows ${CATEGORY_PAGE_DETAILS[category]?.label || category} listings across the Senior Fun USA directory. Use the filters below to narrow results by state, city, or county. Always confirm schedules, pricing, accessibility, registration, and availability directly with each provider before visiting.`
                 : "Search by state, city, category, or keyword. Use the filters to find senior centers, transportation help, caregiver resources, activities, wellness programs, discounts, and senior travel ideas. Always confirm schedules, pricing, accessibility, registration, and availability directly with each provider before visiting."}
             </p>
           </div>
 
           <div className="quick-filter-grid">
-            <button type="button" className="quick-filter-card" onClick={() => showCategoryListings("Senior Center")}>
+            <button
+              type="button"
+              className="quick-filter-card"
+              onClick={() =>
+                stateFilter !== "All" ? showStateCategoryListings("Senior Center") : showCategoryListings("Senior Center")
+              }
+            >
               <span className="quick-filter-icon">🏛️</span>
               <strong>Senior Centers</strong>
               <span>Community programs and local support</span>
@@ -567,7 +683,11 @@ function SeniorFunDirectory() {
             <button
               type="button"
               className="quick-filter-card"
-              onClick={() => showCategoryListings("Transportation Help")}
+              onClick={() =>
+                stateFilter !== "All"
+                  ? showStateCategoryListings("Transportation Help")
+                  : showCategoryListings("Transportation Help")
+              }
             >
               <span className="quick-filter-icon">🚌</span>
               <strong>Transportation</strong>
@@ -577,14 +697,26 @@ function SeniorFunDirectory() {
             <button
               type="button"
               className="quick-filter-card"
-              onClick={() => showCategoryListings("Caregiver Support")}
+              onClick={() =>
+                stateFilter !== "All"
+                  ? showStateCategoryListings("Caregiver Support")
+                  : showCategoryListings("Caregiver Support")
+              }
             >
               <span className="quick-filter-icon">🤝</span>
               <strong>Caregiver Support</strong>
               <span>Help for families and caregivers</span>
             </button>
 
-            <button type="button" className="quick-filter-card" onClick={showTravelListings}>
+            <button
+              type="button"
+              className="quick-filter-card"
+              onClick={() =>
+                stateFilter !== "All"
+                  ? showStateCategoryListings("Senior Travel & Tours")
+                  : showCategoryListings("Senior Travel & Tours")
+              }
+            >
               <span className="quick-filter-icon">🌊</span>
               <strong>Travel & Tours</strong>
               <span>Trips, museums, gardens, and scenic ideas</span>
@@ -599,7 +731,23 @@ function SeniorFunDirectory() {
               onChange={(event) => setSearch(event.target.value)}
             />
 
-            <select value={category} onChange={(event) => setCategory(event.target.value)}>
+            <select
+              value={category}
+              onChange={(event) => {
+                const selectedCategory = event.target.value;
+                if (selectedCategory === "All") {
+                  setCategory("All");
+                  if (categorySlug) {
+                    navigate("/");
+                    scrollToTop();
+                  }
+                } else if (stateFilter !== "All") {
+                  showStateCategoryListings(selectedCategory);
+                } else {
+                  showCategoryListings(selectedCategory);
+                }
+              }}
+            >
               {categories.map((item) => (
                 <option key={item} value={item}>
                   {item === "All" ? "All categories" : item}
@@ -612,7 +760,11 @@ function SeniorFunDirectory() {
               onChange={(event) => {
                 const selectedState = event.target.value;
                 if (selectedState === "All") {
-                  resetFilters();
+                  if (category !== "All") {
+                    showCategoryListings(category);
+                  } else {
+                    resetFilters();
+                  }
                 } else {
                   showStateListings(selectedState);
                 }
@@ -725,7 +877,7 @@ function SeniorFunDirectory() {
         <HawaiiTravelSection showStateListings={showStateListings} showHawaiiTravelIdeas={showHawaiiTravelIdeas} />
       )}
 
-      {stateFilter === "All" && (
+      {stateFilter === "All" && category === "All" && (
         <>
           <StateCardsSection showStateListings={showStateListings} resetFilters={resetFilters} />
 
@@ -843,6 +995,15 @@ function SeniorFunDirectory() {
             Home
           </button>
           <a href="#directory">Directory</a>
+          <button type="button" onClick={() => showCategoryListings("Senior Travel & Tours")}>
+            Travel
+          </button>
+          <button type="button" onClick={() => showCategoryListings("Transportation Help")}>
+            Transportation
+          </button>
+          <button type="button" onClick={() => showCategoryListings("Caregiver Support")}>
+            Caregivers
+          </button>
           <a href={SUBMIT_FORM_URL} target="_blank" rel="noreferrer">
             Submit a listing
           </a>
@@ -903,46 +1064,56 @@ function SeniorFunDirectory() {
   );
 }
 
-function StateVisualSection({ stateName, details, count, showTravelListings }) {
+function VisualLandingSection({
+  label,
+  image,
+  eyebrow,
+  title,
+  intro,
+  count,
+  countLabel,
+  buttonText,
+  onButtonClick,
+}) {
   return (
     <section className="state-page-visual-section">
       <div className="state-page-visual-card">
         <div className="state-page-image">
-          {details.image && (
+          {image && (
             <img
-              src={details.image}
-              alt={`${stateName} senior-friendly resources`}
+              src={image}
+              alt={title}
               onError={(event) => {
                 event.currentTarget.style.display = "none";
               }}
             />
           )}
           <div className="state-page-image-overlay"></div>
-          <span>{details.label}</span>
+          <span>{label}</span>
         </div>
 
         <div className="state-page-copy">
-          <p className="eyebrow">State directory</p>
-          <h2>Senior Fun {stateName}</h2>
-          <p>{details.intro}</p>
+          <p className="eyebrow">{eyebrow}</p>
+          <h2>{title}</h2>
+          <p>{intro}</p>
 
           <div className="state-page-stats">
             <div>
               <strong>{count}</strong>
-              <span>{stateName} listings</span>
+              <span>{countLabel}</span>
             </div>
             <div>
-              <strong>4+</strong>
-              <span>Resource types</span>
+              <strong>9</strong>
+              <span>States covered</span>
             </div>
             <div>
-              <strong>Travel</strong>
-              <span>Senior-friendly ideas</span>
+              <strong>SEO</strong>
+              <span>Dedicated page</span>
             </div>
           </div>
 
-          <button type="button" onClick={showTravelListings}>
-            Browse {stateName} travel ideas
+          <button type="button" onClick={onButtonClick}>
+            {buttonText}
           </button>
         </div>
       </div>
