@@ -112,6 +112,16 @@ function getCategoryVisual(category) {
   return visuals[category] || { icon: "📍", label: "Resource" };
 }
 
+function getListingImage(item) {
+  const title = item.title.toLowerCase();
+
+  if (title.includes("cat ferry") || title.includes("bar harbor to yarmouth")) {
+    return "/images/states/maine-ferry.png";
+  }
+
+  return "";
+}
+
 function App() {
   return (
     <Routes>
@@ -642,48 +652,66 @@ function SeniorFunDirectory() {
             <div className="message">No listings found. Try another search.</div>
           ) : (
             <div className="listing-grid">
-              {filteredListings.map((item) => (
-                <article className="listing-card" key={item.id}>
-                  <div className="card-visual">
-                    <div className="card-visual-icon">{getCategoryVisual(item.category).icon}</div>
-                    <div className="card-visual-text">{getCategoryVisual(item.category).label}</div>
-                  </div>
+              {filteredListings.map((item) => {
+                const listingImage = getListingImage(item);
 
-                  <div className="listing-content">
-                    <div className="card-top">
-                      <span className="category-tag">{item.category}</span>
-                      <span className="location-tag">{item.city}</span>
+                return (
+                  <article className={`listing-card ${listingImage ? "featured-listing-card" : ""}`} key={item.id}>
+                    <div className={`card-visual ${listingImage ? "has-card-image" : ""}`}>
+                      {listingImage ? (
+                        <>
+                          <img
+                            className="card-visual-bg"
+                            src={listingImage}
+                            alt={item.title}
+                            onError={(event) => {
+                              event.currentTarget.style.display = "none";
+                            }}
+                          />
+                          <div className="card-visual-overlay"></div>
+                        </>
+                      ) : null}
+
+                      <div className="card-visual-icon">{getCategoryVisual(item.category).icon}</div>
+                      <div className="card-visual-text">{getCategoryVisual(item.category).label}</div>
                     </div>
 
-                    <h3>{item.title}</h3>
-                    <p>{item.shortDescription}</p>
+                    <div className="listing-content">
+                      <div className="card-top">
+                        <span className="category-tag">{item.category}</span>
+                        <span className="location-tag">{item.city}</span>
+                      </div>
 
-                    <div className="quick-info">
-                      <span>{item.county}</span>
-                      {item.transportationAvailable === "Yes" && <span>Transportation</span>}
-                      {item.dementiaFriendly === "Yes" && <span>Dementia-friendly</span>}
-                      {item.seniorDiscount === "Yes" && <span>Senior discount</span>}
-                      {item.wheelchairAccessible === "Yes" && <span>Wheelchair accessible</span>}
-                    </div>
+                      <h3>{item.title}</h3>
+                      <p>{item.shortDescription}</p>
 
-                    <div className="card-actions">
-                      <button type="button" onClick={() => setSelectedListing(item)}>
-                        View details
-                      </button>
+                      <div className="quick-info">
+                        <span>{item.county}</span>
+                        {item.transportationAvailable === "Yes" && <span>Transportation</span>}
+                        {item.dementiaFriendly === "Yes" && <span>Dementia-friendly</span>}
+                        {item.seniorDiscount === "Yes" && <span>Senior discount</span>}
+                        {item.wheelchairAccessible === "Yes" && <span>Wheelchair accessible</span>}
+                      </div>
 
-                      {item.website !== "Not listed" ? (
-                        <a className="visit-link" href={item.website} target="_blank" rel="noreferrer">
-                          Visit website
-                        </a>
-                      ) : (
+                      <div className="card-actions">
                         <button type="button" onClick={() => setSelectedListing(item)}>
-                          More info
+                          View details
                         </button>
-                      )}
+
+                        {item.website !== "Not listed" ? (
+                          <a className="visit-link" href={item.website} target="_blank" rel="noreferrer">
+                            Visit website
+                          </a>
+                        ) : (
+                          <button type="button" onClick={() => setSelectedListing(item)}>
+                            More info
+                          </button>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </article>
-              ))}
+                  </article>
+                );
+              })}
             </div>
           )}
         </section>
@@ -982,6 +1010,16 @@ function MaineTravelSection({ showFerryListing, showMaineTravelIdeas }) {
       </p>
 
       <div className="travel-route-card">
+        <div className="travel-route-image">
+          <img
+            src="/images/states/maine-ferry.png"
+            alt="Passenger ferry traveling along the Maine coast near a lighthouse"
+            onError={(event) => {
+              event.currentTarget.style.display = "none";
+            }}
+          />
+        </div>
+
         <div>
           <span className="route-pill">Featured route</span>
           <h3>Bar Harbor, Maine → Yarmouth, Nova Scotia</h3>

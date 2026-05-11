@@ -1390,3 +1390,65 @@ button {
     grid-template-columns: 1fr;
   }
 }
+.travel-route-image {
+  grid-column: 1 / -1;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+  background:
+    radial-gradient(circle at top right, rgba(231, 183, 95, 0.25), transparent 35%),
+    linear-gradient(135deg, #dff3f8 0%, #fff5df 100%);
+}
+
+.travel-route-image img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .travel-route-image img {
+    height: 220px;
+  }
+}
+.featured-listing-card {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
+  max-width: 980px;
+}
+
+.featured-listing-card .card-visual {
+  min-height: 420px;
+}
+
+.featured-listing-card .card-visual-bg {
+  object-position: center center;
+}
+
+.featured-listing-card .listing-content {
+  padding: 36px;
+  justify-content: center;
+}
+
+.featured-listing-card .listing-card h3,
+.featured-listing-card h3 {
+  font-size: 30px;
+}
+
+.featured-listing-card .listing-content p {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .featured-listing-card {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-listing-card .card-visual {
+    min-height: 280px;
+  }
+}
