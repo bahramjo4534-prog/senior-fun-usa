@@ -161,6 +161,7 @@ function getCategoryVisual(category) {
     "Museum / Cultural": { icon: "🖼️", label: "Culture" },
     "Social Club": { icon: "☕", label: "Social" },
     "Volunteer Opportunity": { icon: "🌱", label: "Volunteer" },
+    "Fitness & Chair Yoga": { icon: "🧘", label: "Wellness" },
   };
 
   return visuals[category] || { icon: "📍", label: "Resource" };
@@ -318,9 +319,11 @@ function SeniorFunDirectory() {
 
     if (slug) {
       navigate(`/categories/${slug}`);
+      scrollToTop();
+    } else {
+      navigate("/");
+      scrollToDirectory();
     }
-
-    scrollToTop();
   };
 
   const showStateCategoryListings = (categoryName) => {
@@ -421,6 +424,12 @@ function SeniorFunDirectory() {
   const stateDetails = stateFilter !== "All" && categorySlug === undefined ? STATE_PAGE_DETAILS[stateFilter] : null;
   const categoryDetails = category !== "All" && stateFilter === "All" ? CATEGORY_PAGE_DETAILS[category] : null;
 
+  const categoryHeroLabel = CATEGORY_PAGE_DETAILS[category]?.label || category;
+  const categoryHeroTitle = CATEGORY_PAGE_DETAILS[category]?.title || `${category} resources`;
+  const categoryHeroIntro =
+    CATEGORY_PAGE_DETAILS[category]?.intro ||
+    `Browse ${category} listings across the Senior Fun USA directory. Use the filters to narrow results by state, city, county, or keyword.`;
+
   function resetFilters() {
     setSearch("");
     setCategory("All");
@@ -479,7 +488,7 @@ function SeniorFunDirectory() {
               {stateFilter !== "All"
                 ? `Senior Fun ${stateFilter}`
                 : category !== "All"
-                ? `Senior Fun ${CATEGORY_PAGE_DETAILS[category]?.label || category}`
+                ? `Senior Fun ${categoryHeroLabel}`
                 : "Welcome to Senior Fun USA"}
             </p>
 
@@ -487,7 +496,7 @@ function SeniorFunDirectory() {
               {stateFilter !== "All"
                 ? `${stateFilter} senior-friendly resources.`
                 : category !== "All"
-                ? `${CATEGORY_PAGE_DETAILS[category]?.title}.`
+                ? `${categoryHeroTitle}.`
                 : "Discover senior-friendly places, activities, and travel."}
             </h2>
 
@@ -495,7 +504,7 @@ function SeniorFunDirectory() {
               {stateFilter !== "All"
                 ? STATE_PAGE_DETAILS[stateFilter]?.intro
                 : category !== "All"
-                ? CATEGORY_PAGE_DETAILS[category]?.intro
+                ? categoryHeroIntro
                 : `Senior Fun USA helps older adults, families, and caregivers find trusted senior centers, social activities, transportation help, museums, discounts, caregiver resources, dementia-friendly programs, and senior travel opportunities. We now include ${STATE_LIST_TEXT} as the first nine states in a growing nationwide senior lifestyle directory.`}
             </p>
 
@@ -541,7 +550,7 @@ function SeniorFunDirectory() {
                     {stateFilter !== "All"
                       ? `${stateFilter} listings`
                       : category !== "All"
-                      ? `${CATEGORY_PAGE_DETAILS[category]?.label || category} listings`
+                      ? `${categoryHeroLabel} listings`
                       : "Maine listings"}
                   </span>
                 </div>
@@ -655,14 +664,14 @@ function SeniorFunDirectory() {
               {stateFilter !== "All"
                 ? `${stateFilter} directory page`
                 : category !== "All"
-                ? `${CATEGORY_PAGE_DETAILS[category]?.label || category} category page`
+                ? `${categoryHeroLabel} category page`
                 : "How to use this directory"}
             </h3>
             <p>
               {stateFilter !== "All"
                 ? `This page shows senior-friendly resources for ${stateFilter}. Use the filters below to narrow results by category, city, or county. Always confirm schedules, pricing, accessibility, registration, and availability directly with each provider before visiting.`
                 : category !== "All"
-                ? `This page shows ${CATEGORY_PAGE_DETAILS[category]?.label || category} listings across the Senior Fun USA directory. Use the filters below to narrow results by state, city, or county. Always confirm schedules, pricing, accessibility, registration, and availability directly with each provider before visiting.`
+                ? `This page shows ${categoryHeroLabel} listings across the Senior Fun USA directory. Use the filters below to narrow results by state, city, or county. Always confirm schedules, pricing, accessibility, registration, and availability directly with each provider before visiting.`
                 : "Search by state, city, category, or keyword. Use the filters to find senior centers, transportation help, caregiver resources, activities, wellness programs, discounts, and senior travel ideas. Always confirm schedules, pricing, accessibility, registration, and availability directly with each provider before visiting."}
             </p>
           </div>
@@ -885,35 +894,51 @@ function SeniorFunDirectory() {
             <p className="eyebrow">Popular senior resource searches</p>
             <div className="seo-link-cloud">
               {Object.keys(STATE_TO_SLUG).map((stateName) => (
-                <a key={stateName} href={`/states/${STATE_TO_SLUG[stateName]}`} onClick={(event) => {
-                  event.preventDefault();
-                  showStateListings(stateName);
-                }}>
+                <a
+                  key={stateName}
+                  href={`/states/${STATE_TO_SLUG[stateName]}`}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    showStateListings(stateName);
+                  }}
+                >
                   Senior centers in {stateName}
                 </a>
               ))}
-              <a href="/categories/transportation-help" onClick={(event) => {
-                event.preventDefault();
-                showCategoryListings("Transportation Help");
-              }}>
+              <a
+                href="/categories/transportation-help"
+                onClick={(event) => {
+                  event.preventDefault();
+                  showCategoryListings("Transportation Help");
+                }}
+              >
                 Senior transportation help
               </a>
-              <a href="/categories/senior-travel" onClick={(event) => {
-                event.preventDefault();
-                showTravelListings();
-              }}>
+              <a
+                href="/categories/senior-travel"
+                onClick={(event) => {
+                  event.preventDefault();
+                  showTravelListings();
+                }}
+              >
                 Senior travel programs
               </a>
-              <a href="/categories/senior-activities" onClick={(event) => {
-                event.preventDefault();
-                showCategoryListings("Senior-Friendly Event");
-              }}>
+              <a
+                href="/categories/senior-activities"
+                onClick={(event) => {
+                  event.preventDefault();
+                  showCategoryListings("Senior-Friendly Event");
+                }}
+              >
                 Senior activities for older adults
               </a>
-              <a href="/categories/caregiver-support" onClick={(event) => {
-                event.preventDefault();
-                showCategoryListings("Caregiver Support");
-              }}>
+              <a
+                href="/categories/caregiver-support"
+                onClick={(event) => {
+                  event.preventDefault();
+                  showCategoryListings("Caregiver Support");
+                }}
+              >
                 Caregiver resources
               </a>
               <a
@@ -931,10 +956,13 @@ function SeniorFunDirectory() {
               >
                 Dementia-friendly programs
               </a>
-              <a href="/" onClick={(event) => {
-                event.preventDefault();
-                resetFilters();
-              }}>
+              <a
+                href="/"
+                onClick={(event) => {
+                  event.preventDefault();
+                  resetFilters();
+                }}
+              >
                 Senior-friendly places near me
               </a>
             </div>
@@ -945,10 +973,7 @@ function SeniorFunDirectory() {
         </>
       )}
 
-      <InternalLinksSection
-        showStateListings={showStateListings}
-        showCategoryListings={showCategoryListings}
-      />
+      <InternalLinksSection showStateListings={showStateListings} showCategoryListings={showCategoryListings} />
 
       <section className="section submit-section">
         <div className="submit-card">
