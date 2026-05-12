@@ -120,28 +120,28 @@ const CATEGORY_PAGE_DETAILS = {
     title: "Senior transportation help",
     intro:
       "Find senior transportation resources, ride programs, accessible travel options, community transportation, transit help, and mobility support services for older adults and caregivers.",
-    image: "",
+    image: "/images/categories/transportation-help.jpg",
   },
   "Caregiver Support": {
     label: "Caregiver support",
     title: "Caregiver resources for families",
     intro:
       "Browse caregiver support resources, aging services, family assistance programs, community support organizations, dementia-related resources, and help for people caring for older adults.",
-    image: "",
+    image: "/images/categories/caregiver-support.jpg",
   },
   "Senior Center": {
     label: "Senior centers",
     title: "Senior centers and community programs",
     intro:
       "Find senior centers, older adult centers, community programs, social activities, wellness programs, meals, classes, events, and local support services across the directory.",
-    image: "",
+    image: "/images/categories/senior-centers.jpg",
   },
   "Senior-Friendly Event": {
     label: "Senior activities",
     title: "Senior-friendly activities and events",
     intro:
       "Explore senior-friendly events, museums, social programs, art activities, cultural attractions, classes, wellness activities, group outings, and local recreation opportunities.",
-    image: "",
+    image: "/images/categories/senior-activities.jpg",
   },
 };
 
