@@ -8,7 +8,7 @@ const SUBMIT_FORM_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSdbXYVCo02FVyqYorIT236XG515b_R-z6zmc0OJobuiHXQdKQ/viewform?usp=publish-editor";
 
 const STATE_LIST_TEXT =
-  "Massachusetts, Florida, New York, California, Texas, Pennsylvania, Maine, Washington, and Hawaii";
+  "Massachusetts, Florida, New York, California, Texas, Pennsylvania, Maine, Washington, Hawaii, and Vermont";
 
 const STATE_SLUGS = {
   massachusetts: "Massachusetts",
@@ -20,6 +20,7 @@ const STATE_SLUGS = {
   maine: "Maine",
   washington: "Washington",
   hawaii: "Hawaii",
+  vermont: "Vermont",
 };
 
 const STATE_TO_SLUG = {
@@ -32,6 +33,7 @@ const STATE_TO_SLUG = {
   Maine: "maine",
   Washington: "washington",
   Hawaii: "hawaii",
+  Vermont: "vermont",
 };
 
 const CATEGORY_SLUGS = {
@@ -104,6 +106,12 @@ const STATE_PAGE_DETAILS = {
     image: "/images/states/hawaii.jpg",
     intro:
       "Explore Hawaii senior centers, caregiver support, transportation help, museums, gardens, beach parks, national parks, cultural attractions, scenic day trips, and senior-friendly travel ideas across Oahu, Maui, Kauai, Hawaii Island, Molokai, and Lanai.",
+  },
+  Vermont: {
+    label: "Vermont",
+    image: "",
+    intro:
+      "Explore Vermont senior centers, caregiver resources, aging services, meal programs, social activities, wellness opportunities, transportation help, and senior-friendly travel ideas across Burlington, Montpelier, Brattleboro, Bennington, St. Johnsbury, Randolph, Northfield, Barre, and more.",
   },
 };
 
@@ -505,7 +513,7 @@ function SeniorFunDirectory() {
                 ? STATE_PAGE_DETAILS[stateFilter]?.intro
                 : category !== "All"
                 ? categoryHeroIntro
-                : `Senior Fun USA helps older adults, families, and caregivers find trusted senior centers, social activities, transportation help, museums, discounts, caregiver resources, dementia-friendly programs, and senior travel opportunities. We now include ${STATE_LIST_TEXT} as the first nine states in a growing nationwide senior lifestyle directory.`}
+                : `Senior Fun USA helps older adults, families, and caregivers find trusted senior centers, social activities, transportation help, museums, discounts, caregiver resources, dementia-friendly programs, and senior travel opportunities. We now include ${STATE_LIST_TEXT} as the first ten states in a growing nationwide senior lifestyle directory.`}
             </p>
 
             <div className="hero-actions">
@@ -541,7 +549,7 @@ function SeniorFunDirectory() {
                   <span>Total listings</span>
                 </div>
                 <div>
-                  <strong>9</strong>
+                  <strong>10</strong>
                   <span>States covered</span>
                 </div>
                 <div>
@@ -601,7 +609,7 @@ function SeniorFunDirectory() {
                 <h2>A simple directory for older adults, families, and caregivers.</h2>
               </div>
               <p>
-                Senior Fun USA now includes {STATE_LIST_TEXT} as the first nine state directories in the future national
+                Senior Fun USA now includes {STATE_LIST_TEXT} as the first ten state directories in the future national
                 Senior Fun network. This version uses verified listings from official or trusted sources and is designed
                 to grow into a larger national directory over time.
               </p>
@@ -1152,7 +1160,7 @@ function VisualLandingSection({
               <span>{countLabel}</span>
             </div>
             <div>
-              <strong>9</strong>
+              <strong>10</strong>
               <span>States covered</span>
             </div>
             <div>
@@ -1268,7 +1276,9 @@ function StateCardsSection({ showStateListings, resetFilters }) {
           <StateSeoCard
             key={stateName}
             title={`${stateName} senior resources${
-              stateName === "Maine" || stateName === "Washington" || stateName === "Hawaii" ? " and travel" : ""
+              stateName === "Maine" || stateName === "Washington" || stateName === "Hawaii" || stateName === "Vermont"
+                ? " and travel"
+                : ""
             }`}
             label={details.label}
             image={details.image}
