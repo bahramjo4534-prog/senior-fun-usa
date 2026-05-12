@@ -885,25 +885,41 @@ function SeniorFunDirectory() {
             <p className="eyebrow">Popular senior resource searches</p>
             <div className="seo-link-cloud">
               {Object.keys(STATE_TO_SLUG).map((stateName) => (
-                <a key={stateName} href="#directory" onClick={() => showStateListings(stateName)}>
+                <a key={stateName} href={`/states/${STATE_TO_SLUG[stateName]}`} onClick={(event) => {
+                  event.preventDefault();
+                  showStateListings(stateName);
+                }}>
                   Senior centers in {stateName}
                 </a>
               ))}
-              <a href="#directory" onClick={() => showCategoryListings("Transportation Help")}>
+              <a href="/categories/transportation-help" onClick={(event) => {
+                event.preventDefault();
+                showCategoryListings("Transportation Help");
+              }}>
                 Senior transportation help
               </a>
-              <a href="#directory" onClick={showTravelListings}>
+              <a href="/categories/senior-travel" onClick={(event) => {
+                event.preventDefault();
+                showTravelListings();
+              }}>
                 Senior travel programs
               </a>
-              <a href="#directory" onClick={() => showCategoryListings("Senior-Friendly Event")}>
+              <a href="/categories/senior-activities" onClick={(event) => {
+                event.preventDefault();
+                showCategoryListings("Senior-Friendly Event");
+              }}>
                 Senior activities for older adults
               </a>
-              <a href="#directory" onClick={() => showCategoryListings("Caregiver Support")}>
+              <a href="/categories/caregiver-support" onClick={(event) => {
+                event.preventDefault();
+                showCategoryListings("Caregiver Support");
+              }}>
                 Caregiver resources
               </a>
               <a
-                href="#directory"
-                onClick={() => {
+                href="/"
+                onClick={(event) => {
+                  event.preventDefault();
                   setSearch("dementia");
                   setCategory("All");
                   setStateFilter("All");
@@ -915,7 +931,10 @@ function SeniorFunDirectory() {
               >
                 Dementia-friendly programs
               </a>
-              <a href="#directory" onClick={resetFilters}>
+              <a href="/" onClick={(event) => {
+                event.preventDefault();
+                resetFilters();
+              }}>
                 Senior-friendly places near me
               </a>
             </div>
@@ -925,6 +944,11 @@ function SeniorFunDirectory() {
           <HawaiiTravelSection showStateListings={showStateListings} showHawaiiTravelIdeas={showHawaiiTravelIdeas} />
         </>
       )}
+
+      <InternalLinksSection
+        showStateListings={showStateListings}
+        showCategoryListings={showCategoryListings}
+      />
 
       <section className="section submit-section">
         <div className="submit-card">
@@ -1115,6 +1139,88 @@ function VisualLandingSection({
           <button type="button" onClick={onButtonClick}>
             {buttonText}
           </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function InternalLinksSection({ showStateListings, showCategoryListings }) {
+  return (
+    <section className="section seo-link-section">
+      <p className="eyebrow">Explore Senior Fun USA</p>
+      <h2>Browse senior-friendly resources by state or category</h2>
+
+      <div className="seo-link-group">
+        <h3>Explore by State</h3>
+        <div className="seo-link-cloud">
+          {Object.entries(STATE_TO_SLUG).map(([stateName, slug]) => (
+            <a
+              key={stateName}
+              href={`/states/${slug}`}
+              onClick={(event) => {
+                event.preventDefault();
+                showStateListings(stateName);
+              }}
+            >
+              {stateName}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div className="seo-link-group">
+        <h3>Explore by Category</h3>
+        <div className="seo-link-cloud">
+          <a
+            href="/categories/senior-travel"
+            onClick={(event) => {
+              event.preventDefault();
+              showCategoryListings("Senior Travel & Tours");
+            }}
+          >
+            Senior Travel
+          </a>
+
+          <a
+            href="/categories/transportation-help"
+            onClick={(event) => {
+              event.preventDefault();
+              showCategoryListings("Transportation Help");
+            }}
+          >
+            Transportation Help
+          </a>
+
+          <a
+            href="/categories/caregiver-support"
+            onClick={(event) => {
+              event.preventDefault();
+              showCategoryListings("Caregiver Support");
+            }}
+          >
+            Caregiver Support
+          </a>
+
+          <a
+            href="/categories/senior-centers"
+            onClick={(event) => {
+              event.preventDefault();
+              showCategoryListings("Senior Center");
+            }}
+          >
+            Senior Centers
+          </a>
+
+          <a
+            href="/categories/senior-activities"
+            onClick={(event) => {
+              event.preventDefault();
+              showCategoryListings("Senior-Friendly Event");
+            }}
+          >
+            Senior Activities
+          </a>
         </div>
       </div>
     </section>
