@@ -109,7 +109,7 @@ const STATE_PAGE_DETAILS = {
   },
   Vermont: {
     label: "Vermont",
-    image: "",
+    image: "/images/states/vermont.jpg",
     intro:
       "Explore Vermont senior centers, caregiver resources, aging services, meal programs, social activities, wellness opportunities, transportation help, and senior-friendly travel ideas across Burlington, Montpelier, Brattleboro, Bennington, St. Johnsbury, Randolph, Northfield, Barre, and more.",
   },
